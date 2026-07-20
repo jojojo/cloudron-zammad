@@ -1,2 +1,5 @@
+[0.0.2]
+* Fix: PostgreSQL database creation (POSTGRESQL_DB_CREATE=false) to match Cloudron's PostgreSQL addon, which pre-creates the app database and restricts access to it
+
 [0.0.1]
 * Initial release

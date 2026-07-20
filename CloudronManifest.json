@@ -4,7 +4,7 @@
   "author": "Johan Cappi",
   "description": "Open Source Helpdesk",
   "tagline": "Helpdesk and customer support",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "upstreamVersion": "7.1.1",
   "healthCheckPath": "/",
   "httpPort": 8080,

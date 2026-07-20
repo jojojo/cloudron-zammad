@@ -1,0 +1,1 @@
+FROM ghcr.io/zammad/zammad:7.1

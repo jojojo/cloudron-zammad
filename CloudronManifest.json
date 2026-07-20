@@ -1,0 +1,18 @@
+{
+  "id": "io.github.jcappi.zammad",
+  "title": "Zammad",
+  "author": "Johan Cappi",
+  "description": "Open Source Helpdesk",
+  "tagline": "Helpdesk and customer support",
+  "version": "0.0.1",
+  "upstreamVersion": "7.1.0",
+  "healthCheckPath": "/",
+  "httpPort": 3000,
+  "manifestVersion": 2,
+
+  "addons": {
+    "localstorage": {},
+    "postgresql": {},
+    "redis": {}
+  }
+}

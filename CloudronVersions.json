@@ -1,4 +1,44 @@
 {
     "stable": true,
-    "versions": {}
+    "versions": {
+        "0.0.1": {
+            "manifest": {
+                "id": "io.github.jcappi.zammad",
+                "title": "Zammad",
+                "author": "Johan Cappi",
+                "description": "Open Source Helpdesk",
+                "tagline": "Helpdesk and customer support",
+                "version": "0.0.1",
+                "upstreamVersion": "7.1.1",
+                "healthCheckPath": "/",
+                "httpPort": 8080,
+                "manifestVersion": 2,
+                "memoryLimit": 1073741824,
+                "addons": {
+                    "localstorage": {},
+                    "postgresql": {},
+                    "redis": {}
+                },
+                "website": "https://zammad.org",
+                "icon": "file://icon.png",
+                "iconUrl": "https://raw.githubusercontent.com/jojojo/cloudron-zammad/main/icon.png",
+                "packagerName": "Johan Cappi",
+                "packagerUrl": "https://github.com/jcappi",
+                "minBoxVersion": "9.1.0",
+                "changelog": "* Initial release\n",
+                "postInstallMessage": "On first visit, Zammad's setup wizard will ask you to create the initial admin account and configure basic settings.\n\nNotes:\n* Elasticsearch is not bundled with this package; full-text search is disabled by default (`ELASTICSEARCH_ENABLED=false`).\n* Attachments are stored in the PostgreSQL database by default. You can switch to filesystem storage at any time from **Admin > System > Storage** without losing data; filesystem storage uses Cloudron's persistent app storage.\n",
+                "tags": [
+                    "email",
+                    "project"
+                ],
+                "mediaLinks": [
+                    "https://raw.githubusercontent.com/jojojo/cloudron-zammad/main/media/screenshot-1.png"
+                ],
+                "dockerImage": "registry.eoloa.eu/cloudron-zammad:20260720-115214-32238fbde"
+            },
+            "creationDate": "Mon, 20 Jul 2026 12:22:18 GMT",
+            "ts": "Mon, 20 Jul 2026 12:22:18 GMT",
+            "publishState": "published"
+        }
+    }
 }

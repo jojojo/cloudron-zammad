@@ -17,6 +17,7 @@
   },
   "website": "https://zammad.org",
   "icon": "file://icon.png",
+  "iconUrl": "https://raw.githubusercontent.com/jojojo/cloudron-zammad/main/icon.png",
   "packagerName": "Johan Cappi",
   "packagerUrl": "https://github.com/jcappi",
   "minBoxVersion": "9.1.0",
@@ -25,5 +26,8 @@
   "tags": [
     "email",
     "project"
+  ],
+  "mediaLinks": [
+    "https://raw.githubusercontent.com/jojojo/cloudron-zammad/main/media/screenshot-1.png"
   ]
 }

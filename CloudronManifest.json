@@ -5,14 +5,25 @@
   "description": "Open Source Helpdesk",
   "tagline": "Helpdesk and customer support",
   "version": "0.0.1",
-  "upstreamVersion": "7.1.0",
+  "upstreamVersion": "7.1.1",
   "healthCheckPath": "/",
-  "httpPort": 3000,
+  "httpPort": 8080,
   "manifestVersion": 2,
-
+  "memoryLimit": 1073741824,
   "addons": {
     "localstorage": {},
     "postgresql": {},
     "redis": {}
-  }
+  },
+  "website": "https://zammad.org",
+  "icon": "file://icon.png",
+  "packagerName": "Johan Cappi",
+  "packagerUrl": "https://github.com/jcappi",
+  "minBoxVersion": "9.1.0",
+  "changelog": "file://CHANGELOG",
+  "postInstallMessage": "file://POSTINSTALL.md",
+  "tags": [
+    "email",
+    "project"
+  ]
 }

@@ -20,6 +20,7 @@
   "iconUrl": "https://raw.githubusercontent.com/jojojo/cloudron-zammad/main/icon.png",
   "packagerName": "Johan Cappi",
   "packagerUrl": "https://github.com/jcappi",
+  "contactEmail": "johan.cappi@airmes.eu",
   "minBoxVersion": "9.1.0",
   "changelog": "file://CHANGELOG",
   "postInstallMessage": "file://POSTINSTALL.md",

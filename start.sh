@@ -22,7 +22,12 @@ export POSTGRESQL_PORT="${CLOUDRON_POSTGRESQL_PORT}"
 export POSTGRESQL_DB="${CLOUDRON_POSTGRESQL_DATABASE}"
 export POSTGRESQL_USER="${CLOUDRON_POSTGRESQL_USERNAME}"
 export POSTGRESQL_PASS="${CLOUDRON_POSTGRESQL_PASSWORD}"
-export POSTGRESQL_DB_CREATE=true
+# The Cloudron PostgreSQL addon already pre-creates the app's database and
+# restricts pg_hba.conf to it (no access to the "postgres" maintenance
+# database). "rake db:create" would try to connect to that "postgres" admin
+# database and fail with "no pg_hba.conf entry ... database postgres", so we
+# must skip it and go straight to db:migrate/db:seed.
+export POSTGRESQL_DB_CREATE=false
 
 export REDIS_URL="${CLOUDRON_REDIS_URL}"
 

@@ -63,9 +63,11 @@ runuser -p -u zammad -- env HOME=/tmp bash -c "cd /opt/zammad && bundle exec rai
 # present (it is absent when running outside Cloudron, e.g. in local docker
 # testing). Re-applied on every start since the client id/secret can rotate
 # when the addon is re-provisioned. Zammad's generic OpenID Connect provider
-# uses discovery (only needs the issuer URL). PKCE is disabled here: Cloudron's
-# OIDC authorization endpoint rejected the request with "invalid_request" when
-# PKCE parameters were sent alongside a public client (no client_secret).
+# uses discovery (only needs the issuer URL). Cloudron's OIDC addon is a
+# confidential client and requires a client_secret at the token endpoint;
+# Zammad's Setting has no field for one, so config/initializers/
+# zzz_cloudron_oidc_client_secret.rb injects CLOUDRON_OIDC_CLIENT_SECRET into
+# the OmniAuth client_options at runtime (see that file for details).
 if [ -n "${CLOUDRON_OIDC_CLIENT_ID:-}" ] && [ -n "${CLOUDRON_OIDC_ISSUER:-}" ]; then
   echo "==> Configuring Cloudron OIDC single sign-on"
   cat > /tmp/zammad-oidc-init.rb <<RUBY
@@ -75,7 +77,7 @@ Setting.set('auth_openid_connect_credentials', {
   'identifier'    => '${CLOUDRON_OIDC_CLIENT_ID}',
   'issuer'        => '${CLOUDRON_OIDC_ISSUER}',
   'scope'         => 'openid email profile',
-  'pkce'          => false,
+  'pkce'          => true,
 })
 RUBY
   runuser -p -u zammad -- env HOME=/tmp bash -c "cd /opt/zammad && bundle exec rails runner /tmp/zammad-oidc-init.rb"

@@ -48,6 +48,12 @@ RUN rm -rf /etc/nginx/conf.d /etc/nginx/sites-enabled && \
 COPY supervisord.conf /etc/supervisor/supervisord.conf
 COPY start.sh /app/code/start.sh
 
+# Small compatibility patch (not a fork): Cloudron's oidc addon is a
+# confidential client and requires a client_secret at the token endpoint,
+# which Zammad's generic OpenID Connect strategy has no Setting field for.
+# See the initializer itself for details.
+COPY config/initializers/zzz_cloudron_oidc_client_secret.rb /opt/zammad/config/initializers/zzz_cloudron_oidc_client_secret.rb
+
 RUN chmod +x /app/code/start.sh
 
 ENTRYPOINT ["/app/code/start.sh"]

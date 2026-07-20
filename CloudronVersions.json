@@ -166,6 +166,49 @@
             "creationDate": "Mon, 20 Jul 2026 13:30:00 GMT",
             "ts": "Mon, 20 Jul 2026 13:30:00 GMT",
             "publishState": "published"
+        },
+        "0.0.5": {
+            "manifest": {
+                "id": "io.github.jcappi.zammad",
+                "title": "Zammad",
+                "author": "Johan Cappi",
+                "description": "Open Source Helpdesk",
+                "tagline": "Helpdesk and customer support",
+                "version": "0.0.5",
+                "upstreamVersion": "7.1.1",
+                "healthCheckPath": "/",
+                "httpPort": 8080,
+                "manifestVersion": 2,
+                "memoryLimit": 1073741824,
+                "addons": {
+                    "localstorage": {},
+                    "postgresql": {},
+                    "redis": {},
+                    "oidc": {
+                        "loginRedirectUri": "/auth/openid_connect/callback"
+                    }
+                },
+                "website": "https://zammad.org",
+                "icon": "file://icon.png",
+                "iconUrl": "https://raw.githubusercontent.com/jojojo/cloudron-zammad/main/icon.png",
+                "packagerName": "Johan Cappi",
+                "packagerUrl": "https://github.com/jcappi",
+                "contactEmail": "johan.cappi@airmes.eu",
+                "minBoxVersion": "9.1.0",
+                "changelog": "* Fix: inject Cloudron's OIDC client_secret (CLOUDRON_OIDC_CLIENT_SECRET) into Zammad's OpenID Connect client via a small Rails initializer patch. Cloudron's OIDC addon provisions a confidential client and rejects the token exchange with \"invalid_request: client_secret must be provided\" otherwise; Zammad's built-in generic OIDC integration has no Setting field for a client secret (public/PKCE-only by design)\n",
+                "postInstallMessage": "On first visit, Zammad's setup wizard will ask you to create the initial admin account and configure basic settings.\n\nNotes:\n* Elasticsearch is not bundled with this package; full-text search is disabled by default (`ELASTICSEARCH_ENABLED=false`).\n* Attachments are stored in the PostgreSQL database by default. You can switch to filesystem storage at any time from **Admin > System > Storage** without losing data; filesystem storage uses Cloudron's persistent app storage.\n",
+                "tags": [
+                    "email",
+                    "project"
+                ],
+                "mediaLinks": [
+                    "https://raw.githubusercontent.com/jojojo/cloudron-zammad/main/media/screenshot-1.png"
+                ],
+                "dockerImage": "registry.eoloa.eu/cloudron-zammad:20260720-oidc-secretpatch"
+            },
+            "creationDate": "Mon, 20 Jul 2026 14:05:00 GMT",
+            "ts": "Mon, 20 Jul 2026 14:05:00 GMT",
+            "publishState": "published"
         }
     }
 }

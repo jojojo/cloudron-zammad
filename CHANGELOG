@@ -1,3 +1,6 @@
+[0.0.4]
+* Fix: disable PKCE in the Cloudron OIDC single sign-on configuration; Cloudron's OIDC authorization endpoint rejected the request with "invalid_request" when PKCE was enabled alongside a public client (no client_secret transmitted)
+
 [0.0.3]
 * Add Cloudron Single Sign-On support via the oidc addon ("Login with Cloudron" using Zammad's generic OpenID Connect provider). Requires a fresh install to take effect.
 

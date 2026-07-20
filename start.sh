@@ -59,5 +59,26 @@ runuser -p -u zammad -- env HOME=/tmp /opt/zammad/bin/docker-entrypoint zammad-i
 echo "==> Applying FQDN / http_type settings"
 runuser -p -u zammad -- env HOME=/tmp bash -c "cd /opt/zammad && bundle exec rails r \"Setting.set('fqdn', '${ZAMMAD_FQDN}'); Setting.set('http_type', '${ZAMMAD_HTTP_TYPE}')\""
 
+# Configure "Login with Cloudron" single sign-on via the oidc addon, if
+# present (it is absent when running outside Cloudron, e.g. in local docker
+# testing). Re-applied on every start since the client id/secret can rotate
+# when the addon is re-provisioned. Zammad's generic OpenID Connect provider
+# uses discovery (only needs the issuer URL) and a public client with PKCE, no
+# client secret is transmitted.
+if [ -n "${CLOUDRON_OIDC_CLIENT_ID:-}" ] && [ -n "${CLOUDRON_OIDC_ISSUER:-}" ]; then
+  echo "==> Configuring Cloudron OIDC single sign-on"
+  cat > /tmp/zammad-oidc-init.rb <<RUBY
+Setting.set('auth_openid_connect', true)
+Setting.set('auth_openid_connect_credentials', {
+  'display_name' => 'Cloudron',
+  'identifier'    => '${CLOUDRON_OIDC_CLIENT_ID}',
+  'issuer'        => '${CLOUDRON_OIDC_ISSUER}',
+  'scope'         => 'openid email profile',
+  'pkce'          => true,
+})
+RUBY
+  runuser -p -u zammad -- env HOME=/tmp bash -c "cd /opt/zammad && bundle exec rails runner /tmp/zammad-oidc-init.rb"
+fi
+
 echo "==> Starting supervisord"
 exec /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf

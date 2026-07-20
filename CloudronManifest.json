@@ -13,7 +13,10 @@
   "addons": {
     "localstorage": {},
     "postgresql": {},
-    "redis": {}
+    "redis": {},
+    "oidc": {
+      "loginRedirectUri": "/auth/openid_connect/callback"
+    }
   },
   "website": "https://zammad.org",
   "icon": "file://icon.png",

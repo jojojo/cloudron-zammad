@@ -35,10 +35,10 @@
                 "mediaLinks": [
                     "https://raw.githubusercontent.com/jojojo/cloudron-zammad/main/media/screenshot-1.png"
                 ],
-                "dockerImage": "registry.eoloa.eu/cloudron-zammad:20260720-115214-32238fbde"
+                "dockerImage": "registry.eoloa.eu/cloudron-zammad:20260720-amd64-v2"
             },
             "creationDate": "Mon, 20 Jul 2026 12:22:18 GMT",
-            "ts": "Mon, 20 Jul 2026 12:28:16 GMT",
+            "ts": "Mon, 20 Jul 2026 12:40:58 GMT",
             "publishState": "published"
         }
     }

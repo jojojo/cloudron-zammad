@@ -1,3 +1,6 @@
+[0.0.3]
+* Add Cloudron Single Sign-On support via the oidc addon ("Login with Cloudron" using Zammad's generic OpenID Connect provider). Requires a fresh install to take effect.
+
 [0.0.2]
 * Fix: PostgreSQL database creation (POSTGRESQL_DB_CREATE=false) to match Cloudron's PostgreSQL addon, which pre-creates the app database and restricts access to it
 
